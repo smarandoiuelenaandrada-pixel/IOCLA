@@ -1,0 +1,18 @@
+# Solution for task old-hits
+## Smarandoiu Elena-Andrada 315CA
+
+After inspecting the code in Ghidra it's clear that the
+programm generates a pseudo-random value by using the
+function random() with the seed TIME(NULL);
+
+By writing a similar C code and run it at the same time as
+the executable old-hits we will get the same result:
+
+'./a.out && ./old-hits'
+
+In the function validate() the result is incremented with the
+value 0x539, which is equal to 1337, so by adding the result 
+of the random function with the value we will get the secret
+number and the prize:
+
+"Congrats! Here's your link: https://www.youtube.com/watch?v=989-7xsRLR4"
