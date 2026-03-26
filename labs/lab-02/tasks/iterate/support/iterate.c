@@ -7,40 +7,44 @@
 
 void print_chars(void)
 {
-	/**
-	 * TODO: Implement function
-	 */
-	(void) v;
+	unsigned char* char_ptr = (unsigned char *) &v;
 
+	for (int i = 0; i < sizeof(v) / sizeof((*char_ptr)); ++i) {
+		printf("%p -> 0x%x\n", char_ptr, *char_ptr);
+		char_ptr++;
+	}
 	printf("-------------------------------\n");
 }
 
 void print_shorts(void)
 {
-	/**
-	 * TODO: Implement function
-	 */
-	(void) v;
+	unsigned short* char_ptr = (unsigned short *) &v;
 
+	for (int i = 0; i < sizeof(v) / sizeof((*char_ptr)); ++i) {
+		printf("%p -> 0x%x\n", char_ptr, *char_ptr);
+		char_ptr++;
+	}
 	printf("-------------------------------\n");
 }
 
 void print_ints(void)
 {
-	/**
-	 * TODO: Implement function
-	 */
-	(void) v;
+	unsigned int* char_ptr = (unsigned int *) &v;
 
+	for (int i = 0; i < sizeof(v) / sizeof((*char_ptr)); ++i) {
+		printf("%p -> 0x%x\n", char_ptr, *char_ptr);
+		char_ptr++;
+	}
 	printf("-------------------------------\n");
 }
 
 void print_long_longs(void)
 {
-	/**
-	 * TODO: Implement function
-	 */
-	(void) v;
+	unsigned long long* char_ptr = (unsigned long long *) &v;
 
+	for (int i = 0; i < sizeof(v) / sizeof((*char_ptr)); ++i) {
+		printf("%p -> 0x%llx\n", char_ptr, *char_ptr);
+		char_ptr++;
+	}
 	printf("-------------------------------\n");
 }

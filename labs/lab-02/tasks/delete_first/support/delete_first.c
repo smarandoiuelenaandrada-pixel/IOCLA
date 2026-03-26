@@ -8,12 +8,22 @@
 
 char *delete_first(char *s, char *pattern)
 {
-	/**
-	 * TODO: Implement this function
-	 */
+	
+	int n = strlen(s);
+	char s[n];
+	int m = strlen(pattern);
+	int i = 0;
 
-	(void) s;
-	(void) pattern;
-
-	return NULL;
+	for (int i = 0; i < m; ++i) {
+		if (s[i] != pattern[i]) {
+			continue;
+		}
+	}
+	
+	char *p, *q;
+	
+	p = strstr(s, pattern);
+	q = strstr(s, pattern);
+	
+	//printf("%s --- %s", p , q);
 }
