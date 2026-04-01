@@ -14,7 +14,7 @@ main:
     PRINTF64 `the Carry Flag is not active\n\x0`
     test al, al
     ;TODO: activate the Carry Flag
-
+    add al, al
     jc carry_flag
     jmp end
 

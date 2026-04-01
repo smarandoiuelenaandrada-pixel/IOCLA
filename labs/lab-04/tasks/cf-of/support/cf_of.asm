@@ -14,7 +14,7 @@ main:
     PRINTF64 `the Carry Flag and the Overflow Flag are not active\n\x0`
     test al, al
     ;TODO: activate the Carry Flag and the Overflow Flag
-
+    add al, al
     jc cf_on
     jmp end
 

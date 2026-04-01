@@ -33,7 +33,7 @@ main:
     ; TODO3: intersection of the two sets
     mov rdx, rax
     and rdx, rbx
-    PRINTF64 `%u\n\x0`, rdx
+    PRINTF64 `%u\n\x0` , rdx
 
     ; TODO4: the complement of a set
     mov rdx, rax

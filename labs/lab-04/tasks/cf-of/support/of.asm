@@ -14,7 +14,7 @@ main:
     PRINTF64 `the Overflow Flag is not active\n\x0`
     test al, al
     ;TODO: activate the Overflow Flag
-
+    add al, al
     jo overflow_flag
     jmp end
 

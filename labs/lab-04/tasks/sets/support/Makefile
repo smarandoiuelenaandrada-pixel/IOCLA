@@ -14,9 +14,9 @@ LDFLAGS ?= -no-pie
 TARGET_EXEC = sets
 
 $(TARGET_EXEC): $(OBJS)
-	$(CC) $(CFLAGS) $(LDFLAGS) $< -o $@
+	$(CC) $(CFLAGS) $(LDFLAGS) $^ -o $@
 
-$(OBJS): $(SRCS)
+%.o: %.asm
 	$(AS) $(ASFLAGS) $< -o $@
 
 .PHONY: clean

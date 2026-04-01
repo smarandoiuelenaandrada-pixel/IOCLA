@@ -20,17 +20,23 @@ main:
     mov rax, 2
     mov r8, 1
     cmp rax, r8
-    je print                        ; TODO1: rax > r8?
+    ja print                        ; TODO1: rax > r8?
     xor rax, rax
-
+   
     leave
     ret
 
 print:
-    PRINTF64 `%s\n\x0`, myString
-                                    ; TODO2.2: print "Hello, World!" N times
-                                    ; TODO2.1: print "Goodbye, World!"
-    xor rax, rax
+                      
+    xor rcx, rcx
 
+    start:
+        PRINTF64 `Hello, World!\n\0x`
+        INC rcx                    
+        CMP rcx, [N]
+        jnz start
+
+    xor rax, rax
+    PRINTF64 `Goodbye, World!\0x`
     leave
     ret
