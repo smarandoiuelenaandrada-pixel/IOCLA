@@ -10,6 +10,7 @@ char *delete_first(char *s, char *pattern)
 {
 	
 	int n = strlen(s);
+	int m = strlen(pattern);
 	char *p = strstr(s , pattern);
 
 	if (!p) {
