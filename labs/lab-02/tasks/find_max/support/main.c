@@ -28,6 +28,8 @@ int main(void)
 	int *max_elem = (int *)find_max(arr, n, sizeof(*arr), compare);
 
 	printf("The maximum element is: %d\n", *max_elem);
+	int a = 20, b = 10;
+	printf("%d\n", compare(&a, &b));
 
 	free(arr);
 	return 0;

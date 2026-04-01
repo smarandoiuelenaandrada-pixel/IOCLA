@@ -10,20 +10,26 @@ char *delete_first(char *s, char *pattern)
 {
 	
 	int n = strlen(s);
-	char s[n];
-	int m = strlen(pattern);
-	int i = 0;
+	char *p = strstr(s , pattern);
 
-	for (int i = 0; i < m; ++i) {
-		if (s[i] != pattern[i]) {
-			continue;
-		}
+	if (!p) {
+		return s;
 	}
+
+	int k = strlen(p);
+	char *c = malloc(200);
+
+	for (int i = 0; i < m; i++) {
+		p++;
+	}
+
+	for (int i = 0; i < n - k; i++) {
+		c[i] = s[i];
+	}
+	strcat(c, p);
 	
-	char *p, *q;
 	
-	p = strstr(s, pattern);
-	q = strstr(s, pattern);
+	return c;
 	
-	//printf("%s --- %s", p , q);
 }
+

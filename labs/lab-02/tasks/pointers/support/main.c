@@ -31,7 +31,7 @@ int main(void)
 	 */
 	/* assert(SIGN(my_strcmp(s1, s2)) == SIGN(strcmp(s1, s2))); */
 	/* assert(my_strcpy(dest_str, src) && !strcmp(dest_str, src)); */
-	/* assert(my_memcpy(dest_mem, src, sizeof(src)) && !memcmp(dest_mem, src, sizeof(src))); */
+	 assert(my_memcpy(dest_mem, src, sizeof(src)) && !memcmp(dest_mem, src, sizeof(src))); 
 
 	free(dest_str);
 	free(dest_mem);
