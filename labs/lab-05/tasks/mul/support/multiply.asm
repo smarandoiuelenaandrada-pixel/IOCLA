@@ -31,5 +31,30 @@ main:
 
     ; TODO: Implement multiplication for dw, dd and dq data types.
 
+
+    ; for a word dw
+
+    mov ax, word [num1_w]
+    mov dx, word [num2_w]
+    mul dx
+
+    PRINTF64 `Result is: 0x%hx%04hx\n\0x`, rdx, rax
+
+    ; for a double word dd
+
+    mov eax, dword [num1_d]
+    mov ebx, dword [num2_d]
+    mul ebx
+
+    PRINTF64 `Result is: 0x%x%08x\n\0`, rdx, rax
+
+    ; for a quad word dq
+
+    mov rax, qword [num1_q]
+    mov rbx, qword [num2_q]
+    mul rbx
+
+    PRINTF64 `Result is: 0x%lx%016lx\n\x0`, rdx, rax
+
     leave
     ret
