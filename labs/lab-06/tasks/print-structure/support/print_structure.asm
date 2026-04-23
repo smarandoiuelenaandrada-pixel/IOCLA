@@ -49,10 +49,14 @@ main:
     mov rdi, format_surname
     call printf
 
+    mov rax, 22
+    mov [sample_student + age], rax
     movzx rsi, byte [sample_student + age]
     mov rdi, format_age
     call printf
 
+    mov rax, '323CA'
+    mov [sample_student + group], rax
     lea rsi, [sample_student + group]
     mov rdi, format_group
     call printf
@@ -61,6 +65,8 @@ main:
     mov rdi, format_gender
     call printf
 
+    mov rax, 1993
+    mov [sample_student + birth_year], rax
     movzx rsi, word [sample_student + birth_year]
     mov rdi, format_year
     call printf

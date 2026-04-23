@@ -18,10 +18,23 @@ main:
     push rbx
 
     ; TODO: calculate the sum of first N fibonacci numbers
-    ;       (f(0) = 0, f(1) = 1)
+    ;       (f(0) = 0, f(1) = 1, f(2) = 1, f(3) = 2, f(4) = 3, f(5) = 5...)
     xor rax, rax     ;store the sum in rax
 
     ; Use the loop instruction
+
+    mov rcx, [N]
+    xor rax, rax
+    mov rbx, 0 ; the first fibo number
+    mov rdx, 1; the second fibo number
+
+fib_sum:
+    add rax, rbx
+    add rbx, rdx
+    xchg rdx, rbx
+
+    loop fib_sum
+
 
     mov rdi, sum_print_format
     mov rsi, [N]
