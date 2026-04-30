@@ -18,8 +18,25 @@ main:
     ; TODO push the elements of the array on the stack
     ; TODO retrieve the elements (pop) from the stack into the output array
 
+    xor rcx, rcx
+
+loop:
+    push qword [input + 8 * rcx]
+    inc rcx
+    cmp rcx, ARRAY_LEN
+    jne loop
+
+    xor rcx, rcx
+
+loop2:
+    pop  qword [output + 8 * rcx]
+    inc rcx
+    cmp rcx, ARRAY_LEN
+    jne loop2
+
     PRINTF64 `Reversed array: \n\x0`
     xor rcx, rcx
+
 print_array:
     mov rdx, [output + 8 * rcx]
     PRINTF64 `%ld\n\x0`, rdx
