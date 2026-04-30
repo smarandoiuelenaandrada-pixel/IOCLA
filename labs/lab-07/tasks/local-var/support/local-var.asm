@@ -19,22 +19,52 @@ main:
     push rbp
     mov rbp, rsp
 
-    mov rax, 0 ; counter used for array_1
-    mov rbx, 0 ; counter used for array_2
-    mov rcx, 0 ; counter used for the output array
+    sub rsp, 4 * ARRAY_1_LEN
+    mov rdi, 0 
+
+copy_1:
+
+    mov ecx, [array_1 + 4 * rdi]
+    mov [rsp + 4 * rdi], ecx
+    inc rdi
+    cmp rdi, ARRAY_1_LEN
+    jl copy_1
+
+    ;start of array 1
+    mov r8, rsp
+
+    mov rdi, 0
+    sub rsp, 4 * ARRAY_2_LEN
+copy_2:
+    mov ecx, [array_2 + 4 * rdi]
+    mov [rsp + 4 * rdi], ecx
+    inc rdi
+    cmp rdi, ARRAY_2_LEN
+    jl copy_2
+
+    ;start of array 2
+    mov r9, rsp
+
+    sub rsp, 4 * ARRAY_OUTPUT_LEN
+    ;start of the output
+    mov r10, rsp
+
+    mov rax, 0 ; index for array_1
+    mov rbx, 0 ; index for array_2
+    mov rcx, 0 ; index for output array
 
 merge_arrays:
-    mov edx, [array_1 + 4 * rax]
-    cmp edx, [array_2 + 4 * rbx]
+    mov edx, [r8 + 4 * rax]
+    cmp edx, [r9 + 4 * rbx]
     jg array_2_lower
 array_1_lower:
-    mov [array_output + 4 * rcx], edx
+    mov [r10 + 4 * rcx], edx
     inc rax
     inc rcx
     jmp verify_array_end
 array_2_lower:
-    mov edx, [array_2 + 4 * rbx]
-    mov [array_output + 4 * rcx], edx
+    mov edx, [r9 + 4 * rbx]
+    mov [r10 + 4 * rcx], edx
     inc rcx
     inc rbx
 
@@ -46,16 +76,16 @@ verify_array_end:
     jmp merge_arrays
 
 copy_array_1:
-    mov edx, [array_1 + 4 * rax]
-    mov [array_output + 4 * rcx], edx
+    mov edx, [r8 + 4 * rax]
+    mov [r10 + 4 * rcx], edx
     inc rcx
     inc rax
     cmp rax, ARRAY_1_LEN
     jb copy_array_1
     jmp print_array
 copy_array_2:
-    mov edx, [array_2 + 4 * rbx]
-    mov [array_output + 4 * rcx], edx
+    mov edx, [r9 + 4 * rbx]
+    mov [r10 + 4 * rcx], edx
     inc rcx
     inc rbx
     cmp rbx, ARRAY_2_LEN
@@ -65,7 +95,7 @@ print_array:
     PRINTF64 `Array merged:\n\x0`
     mov rcx, 0
 print:
-    mov eax, [array_output + 4 * rcx]
+    mov eax, [r10 + 4 * rcx]
     PRINTF64 `%d \x0`, rax
     inc rcx
     cmp rcx, ARRAY_OUTPUT_LEN
